@@ -50,7 +50,7 @@ const Cart = () => {
                   Remove
                 </button>
               </div>
-            ))}
+            ))}~
           </div>
           <div className="mt-6">
             <h2 className="text-xl font-bold">Cart Total</h2>

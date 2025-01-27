@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import google from "../component/google.png"; // Replace with your actual Google icon path
-import side from "../component/side.png"; // Replace with your side image path
+import fo from "../component/fo.png"; // Replace with your side image path
 
 function Signup() {
   const [result, setResult] = useState("");
@@ -81,7 +81,7 @@ function Signup() {
       <div className="flex flex-col md:flex-row items-center justify-center space-x-0 md:space-x-8 w-full max-w-screen-lg">
         {/* Image Section */}
         <div className=" md:block">
-          <img src={side} alt="Side" className="" />
+          <img src={fo} alt="Side" className="" />
         </div>
         {/* Form Section */}
         <div className="w-full max-w-md shadow-md rounded-lg p-6 space-y-4">

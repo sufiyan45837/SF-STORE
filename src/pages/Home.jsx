@@ -14,7 +14,18 @@ import moniter from "../component/moniter.png";
 import cpu from "../component/cpu.png";
 import FillEye from "../component/Fill Eye.png";
 import FillHeart from "../component/Fill Heart.png"; // Heart icon for wishlist functionality
+import cat from "../component/cat.png"; // Heart icon for wishlist functionality
+import ph from "../component/ph.png"; // Heart icon for wishlist functionality
+import comp from "../component/comp.png"; // Heart icon for wishlist functionality
+import camra from "../component/camra.png"; // Heart icon for wishlist functionality
+import head from "../component/head.png"; // Heart icon for wishlist functionality
+import smart from "../component/smart.png"; // Heart icon for wishlist functionality
+import gaming from "../component/gaming.png"; // Heart icon for wishlist functionality
+import watch from "../component/watch.png"; // Heart icon for wishlist functionality
+import udy from "../component/udy.png"; // Heart icon for wishlist functionality
+import o from "../component/o.png"; // Heart icon for wishlist functionality
 import { useNavigate } from "react-router-dom";
+import Product from "./Porduct";
 
 const Home = () => {
   const [showCart, setShowCart] = useState(false);
@@ -42,7 +53,7 @@ const Home = () => {
   const handleProductDetails = (id) => {
     navigate(`/details/${id}`); // Pass the product ID to the details page
   };
-
+   
   const toggleWishlist = (product) => {
     const isAlreadyWishlisted = wishlist.some((item) => item.id === product.id);
     let updatedWishlist;
@@ -82,6 +93,28 @@ const Home = () => {
       { breakpoint: 600, settings: { slidesToShow: 1 } },
     ],
   };
+  const images = [
+    "https://tse4.mm.bing.net/th?id=OIP.OHeq_FKIqisJhiQnigZ9fQHaE8&pid=Api&P=0&h=220",
+    "https://tse3.mm.bing.net/th?id=OIP.ZI9fWAbZxKZLMFxeELhXygHaE8&pid=Api&P=0&h=220",
+    "https://tse3.mm.bing.net/th?id=OIP.GMR62fOuaozAynix4Hyn0gHaEo&pid=Api&P=0&h=220",
+    "https://tse1.mm.bing.net/th?id=OIP.hF7QTj2zZqAf4Mu0SpB6MgHaE_&pid=Api&P=0&h=220",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+
 
   return (
     <div className="pt-8 ml-8 relative">
@@ -90,7 +123,7 @@ const Home = () => {
         <img
           src={Frame}
           alt="Frame"
-          className="sm:absolute top-[4%] lg:ml-56 left-1/2 transform -translate-x-1/2 h-auto sm: ml-[43%] md: ml-[45%]"
+          className="sm:absolute top-[2%] lg:ml-44 left-1/2 transform -translate-x-1/2 h-auto sm: ml-[43%] md: ml-[45%] "
         />
         <div className="text-xl font-normal lg:ml-5 sm:pl-5 relative z-20">
           {["Woman’s Fashion", "Men’s Fashion", "Electronics", "Home & Lifestyle", "Medicine", "Sports & Outdoor", "Baby’s & Toys", "Groceries & Pets", "Health & Beauty"].map((category, index) => (
@@ -107,7 +140,7 @@ const Home = () => {
       </div>
 
       {/* Products Slider */}
-      <Slider {...sliderSettings} className="pt-12 lg:max-w-screen-lg lg:ml-64">
+      <Slider {...sliderSettings} className="pt-12 lg:max-w-screen-lg lg:ml-56 ">
         {products.map((product, index) => (
           <div key={index} className="px-4 relative">
             <div className="bg-slate-100 shadow-lg p-4 relative">
@@ -144,7 +177,7 @@ const Home = () => {
                 <button
                   className="font-normal w-[210px] text-xl py-2 mt-4 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
                   type="button"
-                  onClick={() => handleAddToCart(product)} // Handle add to cart
+                  onClick={() => handleAddToCart(product)}
                 >
                   Add to cart
                 </button>
@@ -165,11 +198,201 @@ const Home = () => {
         <button
           className="bg-red-500 w-[234px] h-[52px] text-white font-medium rounded border-2 border-red-500 hover:bg-transparent hover:text-red-500 transition-all"
           type="button"
-          onClick={() => navigate("/")} // Go to the main products page
+          onClick={() => navigate("/Porduct")} // Go to the main products page
         >
           View all products
         </button>
       </div>
+      <div className="pt-28 ml-40 ">
+
+        <img src={cat} />
+        <div>
+          <div className="flex flex-wrap gap-6 ml-20 w-full max-w-[1170px] h-auto">
+            {/* Single Category Block */}
+            {[
+              { type: "Phones", image: ph },
+              { type: "Computer", image: comp },
+              { type: "Camera", image: camra },
+              { type: "headphones", image: head },
+              { type: "smart watch", image: smart },
+              { type: "gaming", image: gaming },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center justify-center pt-5 mt-8 w-36 h-36 border-2 border-gray-300 rounded shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <img src={item.image} alt={item.type} className="w-16 h-16" />
+                <button type={item.type} className="mt-4 text-sm font-semibold text-gray-700">
+                  {item.type}
+                </button>
+              </div>
+            ))}
+            <hr className="w-full mt-12 border-t-2 -right-1/3 border-gray-300" />
+
+          </div>
+
+        </div>
+
+        <main className="px-6 py-8 mr-32 pt-20 w-[1170px] ">
+          {/* Header */}
+          <div className="flex justify-between items-center mb-6 ">
+            <div>
+              <p className="text-red-500 font-medium text-3xl">This Month</p>
+              <h2 className="text-5xl font-bold">Best Selling Products</h2>
+            </div>
+            <button
+              className="bg-red-500 text-white text-sm font-bold px-4 py-2 rounded hover:bg-red-600"
+              onClick={() => navigate("/Porduct")}
+            >
+              View All
+            </button>
+          </div>
+        </main>
+        <div className="flex gap-12 pt-8 ">
+         
+         <div className=" bg-slate-100  w-[270px] h-[300px]">
+         <img src={Discount} alt="Discount"   />
+         <img
+                 src={FillEye}
+                 alt="View Icon"
+                 className="ml-[220px] "
+                
+               />
+               
+           <img src="https://fshop.oss-accelerate.aliyuncs.com/20230308110829663598981.png" alt="smart Watch" className=" w-[175px] ml-10"/>
+          
+           <button
+             className="font-normal w-[255px] text-xl py-2 mt-4 ml-2 mr-10  transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
+             type="button"
+             onClick={() => handleAddToCart(Product)}
+
+           >
+             Add to cart
+           </button>
+           <div 
+           className="pt-3">
+           <h3 className="font-bold  text-1xl pt-3">Smart Watch T900 Ultra</h3>
+           <p className="text-red-500 font-sans text-md pt-6 font-medium">
+                 Rs: 1800
+                 <span className="ml-4 text-gray-400 line-through">Rs:2500</span>
+                 <h3 className="flex pt-3 right-36">
+                 <img src={Fivestar} alt="Stars" />
+                 <span className="text-green-500 ml-2">in stock</span>
+               </h3>
+               </p>
+             
+           </div >
+           
+           </div>
+           <div className=" bg-slate-100  w-[270px] h-[300px]">
+         <img src={Discount} alt="Discount"   />
+         <img
+                 src={FillEye}
+                 alt="View Icon"
+                 className="ml-[220px] "
+                
+               />
+               
+           <img src={o} alt="smart Watch" className="  ml-16  w-[130px] "/>
+          
+           <button
+             className="font-normal w-[255px] text-xl py-2 mt-4 ml-2 mr-10  transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
+             type="button"
+             onClick={() => handleAddToCart(Product)}
+
+           >
+             Add to cart
+           </button>
+           <div 
+           className="pt-3">
+           <h3 className="font-bold  text-1xl pt-3">Timex Men's Harborside 42mm Black Leather Strap Watch</h3>
+           <p className="text-red-500 font-sans text-md pt-6 font-medium">
+                 Rs: 2500
+                 <span className="ml-4 text-gray-400 line-through">Rs:3000</span>
+                 <h3 className="flex pt-3 right-36">
+                 <img src={Fivestar} alt="Stars" />
+                 <span className="text-green-500 ml-2">in stock</span>
+               </h3>
+               </p>
+             
+           </div >
+           
+           </div>
+           <div className=" bg-slate-100  w-[270px] h-[300px]">
+         <img src={Discount} alt="Discount"   />
+         <img
+                 src={FillEye}
+                 alt="View Icon"
+                 className="ml-[220px] "
+                
+               />
+               
+           <img src="https://sslimages.shoppersstop.com/sys-master/images/h98/h47/10046387224606/200275742_9999.jpg_2000Wx3000H" alt="smart Watch" className=" w-[120px] ml-16   "/>
+          
+           <button
+             className="font-normal w-[255px] text-xl py-2 mt-4 ml-2 mr-10  transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
+             type="button"
+             onClick={() => handleAddToCart(Product)}
+
+           >
+             Add to cart
+           </button>
+           <div 
+           className="pt-3">
+           <h3 className="font-bold  text-1xl pt-3">Duhnil desire perfume for men</h3>
+           <p className="text-red-500 font-sans text-md pt-6 font-medium">
+                 Rs: 600
+                 <span className="ml-4 text-gray-400 line-through">Rs:1000</span>
+                 <h3 className="flex pt-3 right-36">
+                 <img src={Fivestar} alt="Stars" />
+                 <span className="text-green-500 ml-2">in stock</span>
+               </h3>
+               </p>
+             
+           </div >
+           
+           </div>
+           <div className=" bg-slate-100  w-[270px] h-[300px]">
+         <img src={Discount} alt="Discount"   />
+         <img
+                 src={FillEye}
+                 alt="View Icon"
+                 className="ml-[220px] "
+                
+               />
+               
+           <img src={udy} alt="smart Watch" className=" w-[205px] ml-[50px]  "/>
+          
+           <button
+             className="font-normal w-[255px] text-xl py-2 mt-4 ml-2 mr-10  transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
+             type="button"
+             onClick={() => handleAddToCart(Product)}
+
+           >
+             Add to cart
+           </button>
+           <div 
+           className="pt-3">
+           <h3 className="font-bold  text-1xl pt-3">Udy Perfume For Men 100-ml Price in Pakistan</h3>
+           <p className="text-red-500 font-sans text-md pt-6 font-medium">
+                 Rs: 700
+                 <span className="ml-4 text-gray-400 line-through">Rs:1100</span>
+                 <h3 className="flex pt-3 right-36">
+                 <img src={Fivestar} alt="Stars" />
+                 <span className="text-green-500 ml-2">in stock</span>
+               </h3>
+               </p>
+             
+           </div >
+           
+           </div>
+           </div>
+        
+
+
+      </div>
+
+
     </div>
   );
 };

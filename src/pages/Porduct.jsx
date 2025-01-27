@@ -1,80 +1,96 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import controller from "../component/controller.png";
-import Discount from "../component/Discount.png";
-import Fivestar from "../component/Five star.png";
 import keyboard from "../component/keyboard.png";
 import moniter from "../component/moniter.png";
-const Porduct = () => {
+import cpu from "../component/cpu.png";
+import FillEye from "../component/Fill Eye.png";
+import FillHeart from "../component/Fill Heart.png";
+import Discount from "../component/Discount.png";
 
-     const products = [
-        { image: controller, title: "HAVIT HV-G92 Gamepad", price: 1000, oldPrice: 2000 },
-        { image: keyboard, title: "Gaming Keyboard", price: 2000, oldPrice: 3500 },
-        { image: moniter, title: "HD Monitor", price: 50000, oldPrice: 60000 },
-        { image: cpu, title: "RGBA Light Desktop HD", price: 80000, oldPrice: 90000 },
-        {
-          image: "https://www.pngall.com/wp-content/uploads/5/Gaming-Headset-PNG-HD-Image-1.png",
-          title: "Gaming Headset",
-          price: 4000,
-          oldPrice: 4500,
-        },
-      ];
-    
-      const sliderSettings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        responsive: [
-          { breakpoint: 1024, settings: { slidesToShow: 2 } },
-          { breakpoint: 600, settings: { slidesToShow: 1 } },
-        ],
-      };
-    
+const Product = () => {
+  const [wishlist, setWishlist] = useState(() => JSON.parse(localStorage.getItem("wishlist")) || []);
+  const navigate = useNavigate();
+
+  const handleAddToCart = (product) => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingProduct = cart.find((item) => item.id === product.id);
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${product.title} added to cart!`);
+    navigate('/Cart'); // Navigate to the Cart page
+  };
+
+  const handleProductDetails = (id) => {
+    navigate(`/details/${id}`);
+  };
+
+  const toggleWishlist = (product) => {
+    const isAlreadyWishlisted = wishlist.some((item) => item.id === product.id);
+    let updatedWishlist;
+    if (isAlreadyWishlisted) {
+      updatedWishlist = wishlist.filter((item) => item.id !== product.id);
+    } else {
+      updatedWishlist = [...wishlist, product];
+    }
+    setWishlist(updatedWishlist);
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+  };
+
+  const products = Array.from({ length: 30 }, (_, index) => ({
+    id: index + 1,
+    image: [controller, keyboard, moniter, cpu][index % 4],
+    title: `Product ${index + 1}`,
+    price: Math.floor(Math.random() * 5000) + 1000,
+    oldPrice: Math.floor(Math.random() * 5000) + 5000,
+  }));
+
   return (
-    <Slider {...sliderSettings} className="pt-12 lg:max-w-screen-lg lg:ml-64">
-    {products.map((product, index) => (
-      <div key={index} className="px-4 relative">
-        <div className="bg-slate-100 shadow-lg p-4 relative">
-          <img src={Discount} alt="percent" />
-          <div className="relative">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="pt-7 w-[190px] h-[180px] mx-auto"
-            />
-            <img
-              src={FillEye}
-              alt="View Icon"
-              className="absolute top-2 right-2 w-8 h-8 cursor-pointer"
-              onClick={() => handleImageClick("/Details")} // Trigger to show the full image
-            />
-          </div>
-          <div className="text-center">
-            <h2 className="font-medium">{product.title}</h2>
-            <p className="text-red-500 font-sans text-md pt-6">
+    <div className="p-8">
+      <h1 className="text-4xl font-bold text-center mb-8">All Products</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        {products.map((product) => (
+          <div key={product.id} className="bg-white shadow-lg p-4 rounded relative">
+            <img src={Discount} alt="Discount" className="" />
+            <div className="relative">
+              <img
+                src={product.image}
+                alt={product.title}
+                className="w-full h-48 object-contain mb-4"
+              />
+              <img
+                src={FillEye}
+                alt="View Icon"
+                className="absolute top-2 right-2 w-8 h-8 cursor-pointer"
+                onClick={() => handleProductDetails(product.id)}
+              />
+              <img
+                src={wishlist.some((item) => item.id === product.id) ? FillHeart : "https://img.icons8.com/ios/452/like.png"}
+                alt="Wishlist Icon"
+                className="absolute bottom-2 right-2 w-8 h-8 cursor-pointer"
+                onClick={() => toggleWishlist(product)}
+              />
+            </div>
+            <h2 className="text-lg font-medium mb-2">{product.title}</h2>
+            <p className="text-red-500">
               Rs: {product.price}
-              <span className="ml-4 text-gray-400 line-through">Rs: {product.oldPrice}</span>
+              <span className="ml-2 text-gray-400 line-through">Rs: {product.oldPrice}</span>
             </p>
-            <h3 className="flex justify-center pt-3">
-              <img src={Fivestar} alt="Stars" />
-              <span className="ml-2">(88)</span>
-            </h3>
             <button
-              className="font-normal w-[210px] text-xl py-2 mt-4 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-              type="button"
+              className="mt-4 w-full py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
               onClick={() => handleAddToCart(product)}
             >
-              Add to cart
+              Add to Cart
             </button>
           </div>
-        </div>
+        ))}
       </div>
-    ))}
-  </Slider>
-  )
-}
+    </div>
+  );
+};
 
-export default Porduct
+export default Product;
