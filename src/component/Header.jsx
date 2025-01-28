@@ -41,10 +41,7 @@ export default function Header({
     navigate("/Cart");
   };
 
-  const handleManageAccountClick = () => {
-    setShowUserMenu(false);
-    navigate("/ManageAccount");
-  };
+ 
 
   return (
     <header className="flex flex-col md:flex-row justify-between items-center py-4 px-6 md:px-10 shadow-lg">
@@ -78,6 +75,12 @@ export default function Header({
         >
           Contact
         </Link>
+        <Link
+          to="/Whislist"
+          className="font-bold text-sm md:text-base hover:underline"
+        >
+          Whislist
+        </Link>
       </nav>
 
       <div className="relative flex items-center mt-4 md:mt-0">
@@ -90,7 +93,7 @@ export default function Header({
 
       <div className="relative flex items-center gap-4 mt-4 md:mt-0">
         <img src={my} alt="User" className="w-10 h-10" />
-        <div className="relative">
+        <div className="relative"  onClick={() => navigate("/Whislist")}>
           <img
             src={th}
             alt="Cart"
@@ -119,7 +122,7 @@ export default function Header({
               <ul className="py-2">
                 <li
                   className="flex items-center gap-2 px-4 py-2 hover:bg-red-800 cursor-pointer"
-                  onClick={handleManageAccountClick}
+                  onClick={() => navigate("/Porduct")}
                 >
                   Manage My Account
                 </li>

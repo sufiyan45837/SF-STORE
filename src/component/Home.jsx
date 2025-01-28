@@ -14,18 +14,12 @@ import moniter from "../component/moniter.png";
 import cpu from "../component/cpu.png";
 import FillEye from "../component/Fill Eye.png";
 import FillHeart from "../component/Fill Heart.png"; // Heart icon for wishlist functionality
-import cat from "../component/cat.png"; // Heart icon for wishlist functionality
-import ph from "../component/ph.png"; // Heart icon for wishlist functionality
-import comp from "../component/comp.png"; // Heart icon for wishlist functionality
-import camra from "../component/camra.png"; // Heart icon for wishlist functionality
-import head from "../component/head.png"; // Heart icon for wishlist functionality
-import smart from "../component/smart.png"; // Heart icon for wishlist functionality
-import gaming from "../component/gaming.png"; // Heart icon for wishlist functionality
+import cat from "../component/cat.png"; // Heart icon for wishlist functionality // Heart icon for wishlist functionality
 import watch from "../component/watch.png"; // Heart icon for wishlist functionality
 import udy from "../component/udy.png"; // Heart icon for wishlist functionality
 import o from "../component/o.png"; // Heart icon for wishlist functionality
 import { useNavigate } from "react-router-dom";
-import Product from "./Porduct";
+import Productcard from "../component/Porductcard";
 
 const Home = () => {
   const [showCart, setShowCart] = useState(false);
@@ -72,6 +66,7 @@ const Home = () => {
     { id: 2, image: keyboard, title: "Gaming Keyboard", price: 2000, oldPrice: 3500 },
     { id: 3, image: moniter, title: "HD Monitor", price: 50000, oldPrice: 60000 },
     { id: 4, image: cpu, title: "RGBA Light Desktop HD", price: 80000, oldPrice: 90000 },
+    
     {
       id: 5, image: "https://www.pngall.com/wp-content/uploads/5/Gaming-Headset-PNG-HD-Image-1.png",
       title: "Gaming Headset",
@@ -93,7 +88,7 @@ const Home = () => {
       { breakpoint: 600, settings: { slidesToShow: 1 } },
     ],
   };
-  const images = [
+  const component = [
     "https://tse4.mm.bing.net/th?id=OIP.OHeq_FKIqisJhiQnigZ9fQHaE8&pid=Api&P=0&h=220",
     "https://tse3.mm.bing.net/th?id=OIP.ZI9fWAbZxKZLMFxeELhXygHaE8&pid=Api&P=0&h=220",
     "https://tse3.mm.bing.net/th?id=OIP.GMR62fOuaozAynix4Hyn0gHaEo&pid=Api&P=0&h=220",
@@ -104,13 +99,13 @@ const Home = () => {
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? component.length - 1 : prevIndex - 1
     );
   };
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === component.length - 1 ? 0 : prevIndex + 1
     );
   };
 
@@ -207,29 +202,7 @@ const Home = () => {
 
         <img src={cat} />
         <div>
-          <div className="flex flex-wrap gap-6 ml-20 w-full max-w-[1170px] h-auto">
-            {/* Single Category Block */}
-            {[
-              { type: "Phones", image: ph },
-              { type: "Computer", image: comp },
-              { type: "Camera", image: camra },
-              { type: "headphones", image: head },
-              { type: "smart watch", image: smart },
-              { type: "gaming", image: gaming },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center pt-5 mt-8 w-36 h-36 border-2 border-gray-300 rounded shadow-lg hover:shadow-xl transition-shadow duration-300"
-              >
-                <img src={item.image} alt={item.type} className="w-16 h-16" />
-                <button type={item.type} className="mt-4 text-sm font-semibold text-gray-700">
-                  {item.type}
-                </button>
-              </div>
-            ))}
-            <hr className="w-full mt-12 border-t-2 -right-1/3 border-gray-300" />
-
-          </div>
+        <Productcard/>
 
         </div>
 
@@ -327,7 +300,7 @@ const Home = () => {
                 
                />
                
-           <img src="https://sslimages.shoppersstop.com/sys-master/images/h98/h47/10046387224606/200275742_9999.jpg_2000Wx3000H" alt="smart Watch" className=" w-[120px] ml-16   "/>
+           <img src="https://tse1.mm.bing.net/th?id=OIP.o2N5J_KbgJV1iCFRNuULLwHaLH&pid=Api&P=0&h=220" alt="Duhnil perfume" className=" w-[120px] ml-16   "/>
           
            <button
              className="font-normal w-[255px] text-xl py-2 mt-4 ml-2 mr-10  transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
@@ -366,7 +339,7 @@ const Home = () => {
            <button
              className="font-normal w-[255px] text-xl py-2 mt-4 ml-2 mr-10  transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
              type="button"
-             onClick={() => handleAddToCart(Product)}
+             onClick={() => handleAddToCart(product)}
 
            >
              Add to cart

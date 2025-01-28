@@ -14,7 +14,7 @@ const About = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2, // Show 2 images at a time
+    slidesToShow: 2, // Show 2 component at a time
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,

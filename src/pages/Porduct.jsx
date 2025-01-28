@@ -7,6 +7,7 @@ import cpu from "../component/cpu.png";
 import FillEye from "../component/Fill Eye.png";
 import FillHeart from "../component/Fill Heart.png";
 import Discount from "../component/Discount.png";
+import watch from "../component/watch.png"; // Heart icon for wishlist functionality
 
 const Product = () => {
   const [wishlist, setWishlist] = useState(() => JSON.parse(localStorage.getItem("wishlist")) || []);
@@ -14,16 +15,20 @@ const Product = () => {
 
   const handleAddToCart = (product) => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingProduct = cart.find((item) => item.id === product.id);
+    const existingProduct = cart.find((item) => item.title === product.title);
     if (existingProduct) {
       existingProduct.quantity += 1;
     } else {
       cart.push({ ...product, quantity: 1 });
     }
     localStorage.setItem("cart", JSON.stringify(cart));
-    alert(`${product.title} added to cart!`);
-    navigate('/Cart'); // Navigate to the Cart page
+
+    setShowCart(true);  // Show cart added notification
+    setTimeout(() => setShowCart(false), 2000);  // Hide it after 2 seconds
+
+    navigate("/cart");  // Navigate to cart page
   };
+
 
   const handleProductDetails = (id) => {
     navigate(`/details/${id}`);
