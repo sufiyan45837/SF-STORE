@@ -83,14 +83,20 @@ export default function Header({
         </Link>
       </nav>
 
-      <div className="relative flex items-center mt-4 md:mt-0">
+      <div className="relative flex items-center mt-4 md:mt-0 ">
         <input
           type="text"
           placeholder="What are you Looking..."
           className="px-4 py-2 w-60 md:w-72 border rounded-md shadow text-black focus:outline-none"
         />
       </div>
-
+     
+      <Link
+        to="/Signup"
+        className="font-bold text-sm md:text-base bg-slate-600 text-white hover:bg-white hover:text-slate-600 border border-solid border-slate-600 transition-all px-4 py-2 rounded"
+      >
+        SignUp/Login
+      </Link>
       <div className="relative flex items-center gap-4 mt-4 md:mt-0">
         <img src={my} alt="User" className="w-10 h-10" />
         <div className="relative"  onClick={() => navigate("/Whislist")}>
@@ -114,6 +120,7 @@ export default function Header({
             onClick={handleUserClick}
             ref={userMenuRef}
           />
+
           {showUserMenu && (
             <div
               className="absolute right-0 mt-2 w-[225px] bg-green-400 rounded-lg shadow-lg z-50"
@@ -138,17 +145,13 @@ export default function Header({
                 >
                   Logout
                 </li>
+         
               </ul>
             </div>
           )}
         </div>
       </div>
-      <Link
-        to="/Signup"
-        className="font-bold text-sm md:text-base bg-slate-600 text-white hover:bg-white hover:text-slate-600 border border-solid border-slate-600 transition-all px-4 py-2 rounded"
-      >
-        SignUp/Login
-      </Link>
+    
       <button
         onClick={() => setDarkMode(!darkMode)}
         className="flex items-center gap-2 px-3 py-2 rounded-md border text-sm md:text-base shadow md:ml-4"

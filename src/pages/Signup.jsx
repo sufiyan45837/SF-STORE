@@ -63,7 +63,7 @@ function Signup() {
 
     if (email && password) {
       alert("Login successful!");
-      navigate("/home"); // Redirect to home page on successful login
+      navigate("/Home"); // Redirect to home page on successful login
     } else {
       setResult("Please provide valid email and password.");
     }
@@ -73,8 +73,12 @@ function Signup() {
     const mockGoogleEmail = "sufiyanfaheem281@gmail.com"; // Simulated Google sign-in email
     setFormState((prev) => ({ ...prev, email: mockGoogleEmail }));
     alert(`Signed in with Google account: ${mockGoogleEmail}`);
-    navigate("/home"); // Redirect to home page after signing in with Google
+    navigate("/Home"); // Redirect to home page after signing in with Google
   };
+  const goToHome = () => {
+    navigate("/Home");  // This will navigate to the Home page
+  };
+ 
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
@@ -168,12 +172,13 @@ function Signup() {
                 required
                 className="w-full border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
               />
-              <button
-                type="submit"
-                className="w-full bg-red-600 p-2 rounded-lg hover:bg-blue-600 transition"
-              >
-                Login
-              </button>
+               <button
+      type="button"
+      className="w-full bg-red-600 p-2 rounded-lg hover:bg-blue-600 transition"
+      onClick={goToHome} // Navigate to home page on click
+    >
+      Login
+    </button>
             </form>
           )}
 

@@ -36,6 +36,7 @@ export default function App() {
       className={`min-h-screen ${
         darkMode ? "bg-black text-white" : "bg-white text-black"
       }`}
+
     >
       <Header
         darkMode={darkMode}
@@ -59,7 +60,7 @@ export default function App() {
           path="*"
           element={
             <div className="text-9xl ml-[22%] pt-52 font-bold">
-              404 Not Found
+              404 Not Found Under Working
               <h2 className="text-3xl ml-20 pt-10 text-amber-900">
                 Your visited page not found. You may go home page.
               </h2>
