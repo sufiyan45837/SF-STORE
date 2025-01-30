@@ -33,29 +33,29 @@ const About = () => {
   return (
     <div>
       {/* Top Section */}
-  
+
 
       {/* Slider Section */}
-      <section className="pt-16 px-10 flex ml-40 ">
+      <section className="lg:pt-16 lg:px-10 lg:flex lg:ml-40 ">
 
-          {[type, web].map((image, index) => (
-            <div key={index} className="p-4">
-              <img
-                src={image}
-                alt={`Slide ${index + 1}`}
-                className="w-[525px] h-[336px] mx-auto transition-transform duration-300 hover:scale-105"
-              />
-            </div>
-          ))}
-     
+        {[type, web].map((image, index) => (
+          <div key={index} className="p-4">
+            <img
+              src={image}
+              alt={`Slide ${index + 1}`}
+              className=""
+            />
+          </div>
+        ))}
+
       </section>
 
       {/* Bottom Section */}
-      <section className="pt-28 flex flex-col items-center">
+      <section className="  lg:pt-28 lg:flex lg:flex-col lg:items-center">
         <img
           src={img}
           alt="Main Content"
-          className="w-[700px] h-auto transition-transform duration-300 hover:scale-105"
+          className=" lg:w-[700px] lg:h-auto lg:transition-transform lg:duration-300 lg:hover:scale-105"
         />
         <div className="pt-24">
           <img

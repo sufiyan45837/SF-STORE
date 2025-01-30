@@ -23,6 +23,19 @@ const Productcard = () => {
       { breakpoint: 480, settings: { slidesToShow: 1 } },
     ],
   };
+  const handleAddToCart = (product) => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingItem = cart.find((item) => item.title === product.title);
+
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    navigate("/cart"); // Redirect to cart page
+  };
 
   return (
     <div className="pt-12  lg:max-w-screen-lg gap-10 lg:ml-56  ">
@@ -42,7 +55,7 @@ const Productcard = () => {
   />
   <button
     className="font-normal w-[255px] text-xl py-2 mt-4 ml-2 mr-10 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-    type="button"
+    type="button"     onClick={() => handleAddToCart(product)}
   >
     Add to cart
   </button>
@@ -67,7 +80,7 @@ const Productcard = () => {
   <img src={o} alt="Smart Watch" className="ml-16 w-[130px]" />
   <button
     className="font-normal w-[255px] text-xl py-2 mt-4 ml-2 mr-10 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-    type="button"
+    type="button"    onClick={() => handleAddToCart(product)}
   >
     Add to cart
   </button>
@@ -98,7 +111,7 @@ const Productcard = () => {
   />
   <button
     className="font-normal w-[255px] text-xl py-2 mt-4 ml-2 mr-10 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-    type="button"
+    type="button"     onClick={() => handleAddToCart(product)}
   >
     Add to cart
   </button>
@@ -127,7 +140,7 @@ const Productcard = () => {
   />
   <button
     className="font-normal w-[255px] text-xl py-2 mt-4 ml-2 mr-10 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-    type="button"
+    type="button"    onClick={() => handleAddToCart(product)}
   >
     Add to cart
   </button>
@@ -156,7 +169,7 @@ const Productcard = () => {
   />
   <button
     className="font-normal w-[255px] text-xl py-2 mt-4 ml-2 mr-10 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-    type="button"
+    type="button"    onClick={() => handleAddToCart(product)}
   >
     Add to cart
   </button>

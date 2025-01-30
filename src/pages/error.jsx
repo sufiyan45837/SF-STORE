@@ -1,27 +1,30 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const error = () => {
+const ErrorPage = () => {
+  const navigate = useNavigate();
+
+  const goToHome = () => {
+    navigate("/");
+  };
+
   return (
-    <Route
-          path="*"
-          element={
-            <div className="text-9xl ml-[22%] pt-52 font-bold">
-              404 Not Found Under Working
-              <h2 className="text-3xl ml-20 pt-10 text-amber-900">
-                Your visited page not found. You may go home page.
-              </h2>
-              <button
-                type="button"
-                className="text-2xl bg-orange-900 ml-60"
-                style={{ border: "3px solid black" }}
-                onClick={goToHome}  // Call the goToHome function
-              >
-                Back To Homepage
-              </button>
-            </div>
-          }
-        />
-  )
-}
+    <div className="text-center h-screen flex flex-col justify-center items-center bg-gray-100">
+      <h1 className="text-9xl font-bold text-red-600">404</h1>
+      <h2 className="text-4xl font-semibold text-gray-900 mt-4">
+        Page Not Found
+      </h2>
+      <p className="text-lg text-gray-700 mt-2">
+        The page you are looking for doesn't exist or has been moved.
+      </p>
+      <button
+        onClick={goToHome}
+        className="mt-6 px-6 py-3 bg-orange-600 text-white text-lg font-semibold rounded-md shadow-lg hover:bg-orange-700 transition duration-300"
+      >
+        Back To Homepage
+      </button>
+    </div>
+  );
+};
 
-export default error
+export default ErrorPage;

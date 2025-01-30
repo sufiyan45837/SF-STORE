@@ -44,7 +44,8 @@ export default function App() {
         cartItemCount={cartItemCount}
         setShowMenu={setShowMenu}
         showMenu={showMenu}
-      />
+      /> 
+     
       <Routes>
         <Route path="/Home" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -56,25 +57,7 @@ export default function App() {
         <Route path="/Porduct" element={<Porduct />} />
         <Route path="/ManageAccount" element={<ManageAccount />} />
         <Route path="/wishlist" element={<Wishlist />} />
-        <Route
-          path="*"
-          element={
-            <div className="text-9xl ml-[22%] pt-52 font-bold">
-              404 Not Found Under Working
-              <h2 className="text-3xl ml-20 pt-10 text-amber-900">
-                Your visited page not found. You may go home page.
-              </h2>
-              <button
-                type="button"
-                className="text-2xl bg-orange-900 ml-60"
-                style={{ border: "3px solid black" }}
-                onClick={goToHome}  // Call the goToHome function
-              >
-                Back To Homepage
-              </button>
-            </div>
-          }
-        />
+        
       </Routes>
     </div>
   );
