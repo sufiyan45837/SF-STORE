@@ -115,7 +115,7 @@ const Home = () => {
 
 
   return (
-    <div className="  overflow-x-hidden  pt-8 ml-8 relativ  ">
+    <div className="  overflow-x-hidden  pt-8 ml-8 relative  ">
       {/* Frame and Category Navigation */}
       <div className="items-center ">
         <img
@@ -468,7 +468,7 @@ const Home = () => {
         </div>
   </div>
 </section>
-    <div className="w-full">
+    <div className="">
 <div className="lg:pt-44  ">
         <p className="bg-[#DB4444] w-[20px] h-[40px] lg:ml-40 "><h2 className="text-1xl font-semibold text-[#DB4444] lg:ml-12 w-[106px] h-[20px] lg:pt-3 ">Featured</h2></p>
         <h1 className="text-5xl font-semibold pt-[15px] lg:ml-40">New Arrival</h1>
