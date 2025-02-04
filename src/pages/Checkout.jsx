@@ -82,7 +82,7 @@ const Checkout = () => {
       if (data.success) {
         setResult("Order Placed Successfully");
         event.target.reset(); // Reset form after success
-        navigate("/"); // Redirect to home page or any other relevant page
+        navigate("/Home"); // Redirect to home page or any other relevant page
       } else {
         setResult(data.message || "Failed to place order.");
       }
@@ -113,8 +113,8 @@ const Checkout = () => {
             />
             <input
               type="text"
-              name="companyName"
-              placeholder="Company Name"
+              name="Porduct Name and porduct number same name "
+              placeholder="Porduct Name and porduct number"
               value={billingDetails.companyName}
               onChange={handleInputChange}
               className="w-full border px-4 py-2 rounded"

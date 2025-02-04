@@ -175,7 +175,7 @@ function Signup() {
                <button
       type="button"
       className="w-full bg-red-600 p-2 rounded-lg hover:bg-blue-600 transition"
-      onClick={goToHome} // Navigate to home page on click
+      onClick={() => navigate("/Home")} // Navigate to home page on click
     >
       Login
     </button>

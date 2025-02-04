@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"; 
 import { useParams, useNavigate } from "react-router-dom";
 
-// Sample products list (same as in the ProductList.jsx)
+// Sample products list
 const products = [
   {
     id: 1,
@@ -42,21 +42,25 @@ const products = [
 ];
 
 const Details = () => {
-  const { productId } = useParams(); // Get productId from URL params
-  const product = products.find((prod) => prod.id === parseInt(productId)); // Find the product based on the ID
+  const { productId } = useParams(); 
   const navigate = useNavigate();
-  const [selectedImage, setSelectedImage] = useState(product?.component[0]);
+  
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState("");
 
   useEffect(() => {
-    // In case the product is not found, navigate to a default page or show error
-    if (!product) {
-      navigate("/"); // Navigate to home if product is not found
-    }
-  }, [product, navigate]);
+    const foundProduct = products.find((prod) => prod.id === parseInt(productId));
 
-  if (!product) {
-    return <div>Product not found!</div>;
-  }
+    if (!foundProduct) {
+      navigate("/"); // Navigate to home if product is not found
+    } else {
+      setProduct(foundProduct);
+      setSelectedImage(foundProduct.component[0]); // Set default selected image
+    }
+
+    setLoading(false);
+  }, [productId, navigate]);
 
   const handleAddToCart = () => {
     alert(`${product.title} added to cart!`);
@@ -65,6 +69,14 @@ const Details = () => {
   const handleBuyNow = () => {
     alert(`Proceeding to buy ${product.title}!`);
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!product) {
+    return <div>Product not found!</div>;
+  }
 
   return (
     <div className="p-8">

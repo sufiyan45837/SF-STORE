@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom"; // import useNavigate
 import Header from "./component/Header";
-import Home from "./component/Home";
+import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Signup from "./pages/Signup";
@@ -46,7 +46,9 @@ export default function App() {
         showMenu={showMenu}
       /> 
      
+     
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
