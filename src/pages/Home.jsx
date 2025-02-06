@@ -3,8 +3,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Frame from "../component/Frame.png";
-import For from "../component/For.png";
-import group from "../component/group.png";
 import Discount from "../component/Discount.png";
 import Fivestar from "../component/Five star.png";
 import FillEye from "../component/Fill Eye.png";
