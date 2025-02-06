@@ -11,6 +11,7 @@ import Details from "./pages/Details";
 import Porduct from "./pages/Porduct";
 import ManageAccount from "./pages/ManageAccount";
 import Wishlist from "./pages/Wishlist";
+import Footer from "./component/Footer";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(
@@ -61,6 +62,7 @@ export default function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         
       </Routes>
+      <Footer />
     </div>
   );
 }

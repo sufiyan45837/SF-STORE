@@ -1,12 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUser, FaShoppingBag, FaTimesCircle, FaStar, FaSignOutAlt } from "react-icons/fa";
-import my from "../component/my.png";
-import th from "../component/th.png";
 import user from "../component/user.png";
-import sf from "../component/sf.png";
-
-
+import { HeartIcon, ShoppingCart, User } from "lucide-react";
 export default function Header({ darkMode, setDarkMode, cartItemCount, setShowMenu, showMenu }) {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const navigate = useNavigate();
@@ -29,9 +25,10 @@ export default function Header({ darkMode, setDarkMode, cartItemCount, setShowMe
     <header className="flex flex-wrap items-center justify-between px-6 py-4 shadow-lg">
       {/* Logo */}
       <div className="flex justify-between items-center w-full md:w-auto">
-        <h1 className="text-2xl md:text-3xl font-bold">
-          <img src={sf} alt="Logo" className="h-[50px]" />
-        </h1>
+      <div className="flex items-center space-x-2 p-4">
+      <ShoppingCart size={36} className="" />
+      <span className="text-xl font-bold ">Sf Store</span>
+    </div>
         <button
           onClick={() => setShowMenu((prev) => !prev)}
           className="block md:hidden text-2xl p-2"
@@ -57,13 +54,11 @@ export default function Header({ darkMode, setDarkMode, cartItemCount, setShowMe
         />
       </div>
 
-      {/* User Section */}
-      <div className="flex items-center gap-4 mt-4 md:mt-0">
-        <img src={my} alt="User" className="w-10 h-10" />
 
-        {/* Wishlist & Cart */}
+      <div className="flex items-center gap-4 mt-4 md:mt-0">
+       <HeartIcon size={36} className="cursor-pointer" onClick={() => navigate("/Wishlist")} />
         <div className="relative cursor-pointer" onClick={() => navigate("/Cart")}>
-          <img src={th} alt="Cart" className="w-8 h-8" />
+        <ShoppingCart size={36} className="" />
           {cartItemCount > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full px-2 py-1 text-xs font-bold">
               {cartItemCount}
@@ -71,16 +66,16 @@ export default function Header({ darkMode, setDarkMode, cartItemCount, setShowMe
           )}
         </div>
 
-        {/* User Profile Dropdown Menu */}
         <div className="relative cursor-pointer">
-          <img
+          {/* <img
             src={user}
             alt="User"
             className="w-8 h-8 cursor-pointer"
             onClick={handleUserClick}
             ref={userMenuRef}
-          />
-
+          /> */}
+        <User size={30}  onClick={handleUserClick}
+            ref={userMenuRef}/>
           {/* User Menu Dropdown */}
           {showUserMenu && (
             <div className="absolute right-0 mt-2 w-[225px] bg-black rounded-lg shadow-lg z-50 text-white">

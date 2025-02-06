@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import aro from "../component/aro.png";
 import Frame from "../component/Frame.png";
 import For from "../component/For.png";
 import group from "../component/group.png";
@@ -10,7 +9,6 @@ import Discount from "../component/Discount.png";
 import Fivestar from "../component/Five star.png";
 import FillEye from "../component/Fill Eye.png";
 import FillHeart from "../component/Fill Heart.png";
-import ca from "../component/ca.png";
 import speaker from "../component/speaker.png"
 import timer from "../component/timer.png"
 import { useNavigate } from "react-router-dom";
@@ -22,7 +20,8 @@ import perfume from "../component/perfume.png"
 import Services from "../component/Services.png"
 import Servicess from "../component/Servicess.png"
 import Servicesss from "../component/Servicesss.png"
-
+import CountdownTimer from "../component/CountdownTimer";
+import { CarrotIcon, ShoppingCartIcon } from "lucide-react";
 const Home = () => {
   const [showCart, setShowCart] = useState(false);
   const [wishlist, setWishlist] = useState(() => JSON.parse(localStorage.getItem("wishlist")) || []);
@@ -39,15 +38,15 @@ const Home = () => {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    setShowCart(true);  // Show cart added notification
-    setTimeout(() => setShowCart(false), 2000);  // Hide it after 2 seconds
+    setShowCart(true);  
+    setTimeout(() => setShowCart(false), 2000);  
 
-    navigate("/cart");  // Navigate to cart page
+    navigate("/cart");  
   };
 
-  // Navigate to product details page
+
   const handleProductDetails = (id) => {
-    navigate(`/details/${id}`); // Pass the product ID to the details page
+    navigate(`/details/${id}`); 
   };
 
   const toggleWishlist = (product) => {
@@ -60,7 +59,7 @@ const Home = () => {
     }
 
     setWishlist(updatedWishlist);
-    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist)); // Save to local storage
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist)); 
   };
 
   const products = [
@@ -115,33 +114,36 @@ const Home = () => {
 
 
   return (
-    <div className="  overflow-x-hidden w-ful pt-11 ml-8 relative ">
+    <div className="  overflow-x-hidden w-fu pt-11 ml-8 relative ">
       {/* Frame and Category Navigation */}
       <div className="items-center ">
         <img
           src={Frame}
           alt="Frame"
-          className="sm:absolute top-[1%] lg:ml-44 left-1/2 transform -translate-x-1/2 h-auto sm: ml-[43%] md: ml-[45%] "
+          className="sm:absolute top-[1%] lg:ml-44 left-1/2 transform -translate-x-1/2 h-auto  ml-[45%] "
         />
         <div className="text-xl font-normal lg:ml-5 sm:pl-5 relative z-20">
           {["Woman’s Fashion", "Men’s Fashion", "Electronics", "Home & Lifestyle", "Medicine", "Sports & Outdoor", "Baby’s & Toys", "Groceries & Pets", "Health & Beauty"].map((category, index) => (
             <h1 className="flex items-center pt-3" key={index}>
               {category}
-              <img src={aro} alt="" className="w-6 h-6 bg-white" />
             </h1>
           ))}
         </div>
-        <div className="pt-40 flex flex-wrap justify-center gap-8 lg:transform -translate-x-1/3 justify-center">
-          <img src={For} alt="For Image" className="w-32 h-auto bg-white ml-[50px]" />
-          <img src={group} alt="Group" className="h-14 w-auto bg-white  ml-[50px]" />
+        <div className="pt-40 flex flex-wrap justify-center gap-8 lg:transform -translate-x-1/3 ">
+        <div className="ml-[400px]" >       
+           <p className="bg-[#DB4444] w-[20px] h-[40px] lg:ml-28 "><h2 className="text-1xl font-semibold text-[#DB4444] lg:ml-9  lg:pt-3 ">Todays</h2></p>
+        </div>
+
+          <h1 className="text-3xl font-semibold  pt-[40px] lg:pr-9 -translate-x-1/3">Flash Sales</h1>
+           <CountdownTimer />
         </div>
       </div>
 
       {/* Products Slider */}
-      <Slider {...sliderSettings} className="pt-12 lg:max-w-screen-lg lg:ml-[200px] ">
+      <Slider {...sliderSettings} className="pt-12 lg:max-w-screen-lg lg:ml-[180px] ">
         {products.map((product, index) => (
           <div key={index} className="px-4 relative">
-            <div className="bg-slate-100 shadow-lg p-4 relative">
+            <div className=" shadow-lg p-4 relative">
               <img src={Discount} alt="Discount" />
               <div className="relative">
                 <img
@@ -159,7 +161,7 @@ const Home = () => {
                   src={wishlist.some(item => item.id === product.id) ? FillHeart : "https://img.icons8.com/ios/452/like.png"} // Toggle between filled and empty heart
                   alt="Wishlist Icon"
                   className="absolute top-2 left-2 w-8 h-8 cursor-pointer"
-                  onClick={() => toggleWishlist(product)} // Add to wishlist
+                  onClick={() => navigate("/Wishlist")}
                 />
               </div>
               <div className="text-center">
@@ -173,11 +175,11 @@ const Home = () => {
                   <span className="ml-2">(88)</span>
                 </h3>
                 <button
-                  className="font-normal w-[210px] text-xl py-2 mt-4 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
+                  className="font-normal w-[250px] text-xl py-2 mt-4 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
                   type="button"
                   onClick={() => handleAddToCart(product)}
                 >
-                  Add to cart
+                   < ShoppingCartIcon size={30} className="ml-28"/>
                 </button>
               </div>
             </div>
@@ -186,7 +188,7 @@ const Home = () => {
       </Slider>
 
       {showCart && (
-        <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg">
+        <div className="fixed top-4 right-4 bg-green-500  px-4 py-2 rounded shadow-lg">
           Product added to cart!
         </div>
       )}
@@ -194,16 +196,12 @@ const Home = () => {
       {/* View all Products Button */}
       <div className="pt-20 flex justify-center mr-[10%] ">
         <button
-          className="bg-red-500 w-[234px] h-[52px] text-white font-medium rounded border-2 border-red-500 hover:bg-transparent hover:text-red-500 transition-all"
+          className="bg-red-500 w-[234px] h-[52px]  font-medium rounded border-2 border-red-500 hover:bg-transparent hover:text-red-500 transition-all"
           type="button"
-          onClick={() => navigate("/Porduct")} // Go to the main products page
+          onClick={() => navigate("/Porduct")} 
         >
           View all products
         </button>
-      </div>
-      <div className="pt-28 lg:pl-[100px] ">
-
-        <img src={ca} />
       </div>
       <div>
 
@@ -221,18 +219,14 @@ const Home = () => {
           </div>
           <div className="lg:pl-36">
             <button
-              className="bg-red-500 text-white text-sm lg:text-base font-bold px-6 py-2 rounded-lg hover:bg-red-600 transition-all lg:ml-[200%] lg:w-52"
+              className="bg-red-500  text-sm lg:text-base font-bold px-6 py-2 rounded-lg hover:bg-red-600 transition-all lg:ml-[200%] lg:w-52"
               onClick={() => navigate("/Porduct")}
             >
               View All
             </button>
           </div>
-
-
         </div>
       </main>
-
-
       <Productcard />
       <div className=" lg:flex lg:pl-[190px]  pt-[60px] lg:pt-[50px] ">
         <div className="font-bold bg-black text-white lg:pl-[60px]  ">
@@ -241,7 +235,7 @@ const Home = () => {
           <img className=" pt-[60px] lg:pt-[40px]" src={timer} alt="" />
           <div className=" pl-[90px]  lg:pl-[1px] lg:pt-[15px]">
             <button
-              className="mt-10 bg-[#00FF66] text-white px-8 py-3  shadow-md hover:shadow-lg transition"
+              className="mt-10 bg-[#00FF66]  px-8 py-3  shadow-md hover:shadow-lg transition"
               onClick={() => navigate("/Porduct")}
             >
               Buy Now!
@@ -253,10 +247,6 @@ const Home = () => {
         </div>
 
       </div>
-
-      {/* productssss */}
-
-
       <section className="m-4 md:m-6 lg:m-9">
         <div className="lg:pt-44">
           <p className="bg-[#DB4444] w-[20px] h-[40px] lg:ml-28 "><h2 className="text-1xl font-semibold text-[#DB4444] lg:ml-12 w-[106px] h-[20px] lg:pt-3 ">Our Products</h2></p>
@@ -265,7 +255,7 @@ const Home = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:pt-20">
-          <div className="bg-slate-100 w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
+          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
             <img src={Discount} alt="Discount" className="" />
             <div className="relative">
               <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
@@ -276,7 +266,8 @@ const Home = () => {
               type="button"
               onClick={() => handleAddToCart(product)}
             >
-              Add to cart
+              < ShoppingCartIcon size={30} className="ml-32"/>
+             
             </button>
             <div className="pt-3 text-center">
               <h3 className="font-bold text-lg pt-3">Ubl speaker high quality</h3>
@@ -289,7 +280,7 @@ const Home = () => {
               </h3>
             </div>
           </div>
-          <div className="bg-slate-100 w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
+          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
             <img src={Discount} alt="Discount" className="" />
             <div className="relative">
               <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
@@ -300,7 +291,7 @@ const Home = () => {
               type="button"
               onClick={() => handleAddToCart(product)}
             >
-              Add to cart
+               < ShoppingCartIcon size={30} className="ml-32"/>
             </button>
             <div className="pt-3 text-center">
               <h3 className="font-bold text-lg pt-3">Hblot Black Dial Men's Watch</h3>
@@ -313,7 +304,7 @@ const Home = () => {
               </h3>
             </div>
           </div>
-          <div className="bg-slate-100 w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
+          <div className="w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
             <img src={Discount} alt="Discount" className="" />
             <div className="relative">
               <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
@@ -324,7 +315,7 @@ const Home = () => {
               type="button"
               onClick={() => handleAddToCart(product)}
             >
-              Add to cart
+               < ShoppingCartIcon size={30} className="ml-32"/>
             </button>
             <div className="pt-3 text-center">
               <h3 className="font-bold text-lg pt-3">Rolex Submariner Blue</h3>
@@ -337,7 +328,7 @@ const Home = () => {
               </h3>
             </div>
           </div>
-          <div className="bg-slate-100 w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
+          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
             <img src={Discount} alt="Discount" className="" />
             <div className="relative">
               <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
@@ -348,7 +339,7 @@ const Home = () => {
               type="button"
               onClick={() => handleAddToCart(product)}
             >
-              Add to cart
+               < ShoppingCartIcon size={30} className="ml-32"/>
             </button>
             <div className="pt-3 text-center">
               <h3 className="font-bold text-lg pt-3">Airpods Pro 6 Wireless </h3>
@@ -361,7 +352,7 @@ const Home = () => {
               </h3>
             </div>
           </div>
-          <div className="bg-slate-100 w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
+          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
             <img src={Discount} alt="Discount" className="" />
             <div className="relative">
               <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
@@ -372,7 +363,7 @@ const Home = () => {
               type="button"
               onClick={() => handleAddToCart(product)}
             >
-              Add to cart
+               < ShoppingCartIcon size={30} className="ml-32"/>
             </button>
             <div className="pt-3 text-center">
               <h3 className="font-bold text-lg pt-3">Square Frame glasses for girls</h3>
@@ -385,7 +376,7 @@ const Home = () => {
               </h3>
             </div>
           </div>
-          <div className="bg-slate-100 w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
+          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
             <img src={Discount} alt="Discount" className="" />
             <div className="relative">
               <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
@@ -396,7 +387,7 @@ const Home = () => {
               type="button"
               onClick={() => handleAddToCart(product)}
             >
-              Add to cart
+               < ShoppingCartIcon size={30} className="ml-32"/>
             </button>
             <div className="pt-3 text-center">
               <h3 className="font-bold text-lg pt-3">Square plastic sun glasses for men,boys</h3>
@@ -409,7 +400,7 @@ const Home = () => {
               </h3>
             </div>
           </div>
-          <div className="bg-slate-100 w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
+          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
             <img src={Discount} alt="Discount" className="" />
             <div className="relative">
               <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
@@ -420,7 +411,7 @@ const Home = () => {
               type="button"
               onClick={() => handleAddToCart(product)}
             >
-              Add to cart
+               < ShoppingCartIcon size={30} className="ml-32"/>
             </button>
             <div className="pt-3 text-center">
               <h3 className="font-bold text-md pt-3">Shoes addidas for mens,boys and girl</h3>
@@ -433,7 +424,7 @@ const Home = () => {
               </h3>
             </div>
           </div>
-          <div className="bg-slate-100 w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
+          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
             <img src={Discount} alt="Discount" className="" />
             <div className="relative">
               <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
@@ -444,7 +435,7 @@ const Home = () => {
               type="button"
               onClick={() => handleAddToCart(product)}
             >
-              Add to cart
+               < ShoppingCartIcon size={30} className="ml-32"/>
             </button>
             <div className="pt-3 text-center">
               <h3 className="font-bold text-lg pt-3">Slaonica bed sheet king size </h3>
@@ -459,7 +450,7 @@ const Home = () => {
           </div>
           <div className="lg:ml-[170%] lg:pt-10">
             <button
-              className="bg-red-500 w-[234px] h-[52px] text-white font-medium rounded border-2 border-red-500 hover:bg-transparent hover:text-red-500 transition-all"
+              className="bg-red-500 w-[234px] h-[52px]  font-medium rounded border-2 border-red-500 hover:bg-transparent hover:text-red-500 transition-all"
               type="button"
               onClick={() => navigate("/Porduct")} // Go to the main products page
             >
@@ -468,7 +459,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <div className="bg-white text-black">
+      <div className=" ">
         {/* Featured Section */}
         <section className="p-8">
           <div className="lg:pt-44">
@@ -525,34 +516,6 @@ const Home = () => {
             </div>
           </div>
         </section>
-
-        {/* Footer Section */}
-        <footer className="bg-black text-white p-8 cursor-pointer">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-semibold">Exclusive</h3>
-              <p>Get 10% off your first order</p>
-              <input type="email" placeholder="Enter your email" className="p-2 text-black mt-2" />
-            </div>
-            <div>
-              <h3 className="font-semibold">Support</h3>
-              <p>Email: exclusive@gmail.com</p>
-              <p>Phone: +88098-9999-9999</p>
-            </div>
-            <div>
-              <h3 className="font-semibold">Quick Links</h3>
-              <ul>
-                <li>My Account</li>
-                <li>Login / Register</li>
-                <li>Cart</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold">Download App</h3>
-              <img src="/qrcode.png" alt="QR Code" className="w-24" />
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
   );

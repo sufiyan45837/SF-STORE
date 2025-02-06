@@ -6,11 +6,10 @@ import "slick-carousel/slick/slick-theme.css";
 import Discount from "../component/Discount.png";  
 import FillEye from "../component/Fill Eye.png";    
 import Fivestar from "../component/Five star.png";  
-import udy from "../component/udy.png";            
-import o from "../component/o.png";               
+import { CarrotIcon, ShoppingCartIcon } from "lucide-react";
 
 const Productcard = () => {
-  const navigate = useNavigate(); // Initialize navigate hook
+  const navigate = useNavigate();
 
   const sliderSettings = {
     dots: true,
@@ -38,10 +37,9 @@ const Productcard = () => {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
-    navigate("/cart"); // Navigate to the cart page
+    navigate("/cart"); 
   };
 
-  // Define products array
   const products = [
     {
       title: "Smart Watch T900 Ultra",
@@ -79,7 +77,7 @@ const Productcard = () => {
     <div className="pt-12 lg:max-w-screen-lg gap-10 lg:ml-56 ">
       <Slider {...sliderSettings}>
         {products.map((product, index) => (
-          <div key={index} className="bg-slate-100 w-[270px] h-[300px]">
+          <div key={index} className=" w-[270px] h-[300px]">
             <img src={Discount} alt="Discount" />
             <img src={FillEye} alt="View Icon" className="ml-[220px]" />
             <img src={product.image} alt={product.title} className="w-[175px] ml-10" />
@@ -88,7 +86,7 @@ const Productcard = () => {
               type="button"
               onClick={() => handleAddToCart(product)}
             >
-              Add to cart
+              < ShoppingCartIcon size={30} className="ml-28"/>
             </button>
             <div className="pt-3">
               <h3 className="font-bold text-1xl pt-3">{product.title}</h3>
