@@ -20,6 +20,7 @@ import Servicess from "../component/Servicess.png"
 import Servicesss from "../component/Servicesss.png"
 import CountdownTimer from "../component/CountdownTimer";
 import { CarrotIcon, ShoppingCartIcon } from "lucide-react";
+import ProductsSection from "../component/ProductsSection";
 const Home = () => {
   const [showCart, setShowCart] = useState(false);
   const [wishlist, setWishlist] = useState(() => JSON.parse(localStorage.getItem("wishlist")) || []);
@@ -112,7 +113,7 @@ const Home = () => {
 
 
   return (
-    <div className="  overflow-x-hidden w-fu pt-11 ml-8 relative ">
+    <div className="  overflow-x-hidden  pt-11  relative ">
       {/* Frame and Category Navigation */}
       <div className="items-center ">
         <img
@@ -245,218 +246,7 @@ const Home = () => {
         </div>
 
       </div>
-      <section className="m-4 md:m-6 lg:m-9">
-        <div className="lg:pt-44">
-          <p className="bg-[#DB4444] w-[20px] h-[40px] lg:ml-28 "><h2 className="text-1xl font-semibold text-[#DB4444] lg:ml-12 w-[106px] h-[20px] lg:pt-3 ">Our Products</h2></p>
-          <h1 className="text-5xl font-semibold lg:ml-28 pt-[15px] ">Explore Our Products</h1>
-
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:pt-20">
-          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
-            <img src={Discount} alt="Discount" className="" />
-            <div className="relative">
-              <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
-              <img src={speaker} alt="Smart Watch" className="w-40 mx-auto h-40" />
-            </div>
-            <button
-              className="w-full text-lg py-2 mt-4 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-              type="button"
-              onClick={() => handleAddToCart(product)}
-            >
-              < ShoppingCartIcon size={30} className="ml-32"/>
-             
-            </button>
-            <div className="pt-3 text-center">
-              <h3 className="font-bold text-lg pt-3">Ubl speaker high quality</h3>
-              <p className="text-red-500 font-medium pt-2">
-                Rs: 1800 <span className="ml-4 text-gray-400 line-through">Rs:2500</span>
-              </p>
-              <h3 className="flex justify-center items-center pt-3">
-                <img src={Fivestar} alt="Stars" className="w-20" />
-                <span className="text-green-500 ml-2">in stock</span>
-              </h3>
-            </div>
-          </div>
-          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
-            <img src={Discount} alt="Discount" className="" />
-            <div className="relative">
-              <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
-              <img src="http://cdn2.jomashop.com/media/catalog/product/h/u/hublot-classic-fusion-18k-gold-black-dial-men_s-watch-511.ox.1180.lr.jpg" alt="Hublot" className="w-40 mx-auto h-40" />
-            </div>
-            <button
-              className="w-full text-lg py-2 mt-4 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-              type="button"
-              onClick={() => handleAddToCart(product)}
-            >
-               < ShoppingCartIcon size={30} className="ml-32"/>
-            </button>
-            <div className="pt-3 text-center">
-              <h3 className="font-bold text-lg pt-3">Hblot Black Dial Men's Watch</h3>
-              <p className="text-red-500 font-medium pt-2">
-                Rs: 2500 <span className="ml-4 text-gray-400 line-through">Rs:3500</span>
-              </p>
-              <h3 className="flex justify-center items-center pt-3">
-                <img src={Fivestar} alt="Stars" className="w-20" />
-                <span className="text-green-500 ml-2">in stock</span>
-              </h3>
-            </div>
-          </div>
-          <div className="w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
-            <img src={Discount} alt="Discount" className="" />
-            <div className="relative">
-              <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
-              <img src="https://toppng.com/uploads/preview/submariner-date-rolex-submariner-date-116618-11563269252pzhbhoa1cx.png" alt="rolex" className="w-40 mx-auto h-40" />
-            </div>
-            <button
-              className="w-full text-lg py-2 mt-4 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-              type="button"
-              onClick={() => handleAddToCart(product)}
-            >
-               < ShoppingCartIcon size={30} className="ml-32"/>
-            </button>
-            <div className="pt-3 text-center">
-              <h3 className="font-bold text-lg pt-3">Rolex Submariner Blue</h3>
-              <p className="text-red-500 font-medium pt-2">
-                Rs: 5000<span className="ml-4 text-gray-400 line-through">Rs:6000</span>
-              </p>
-              <h3 className="flex justify-center items-center pt-3">
-                <img src={Fivestar} alt="Stars" className="w-20" />
-                <span className="text-green-500 ml-2">in stock</span>
-              </h3>
-            </div>
-          </div>
-          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
-            <img src={Discount} alt="Discount" className="" />
-            <div className="relative">
-              <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
-              <img src="https://shopnow.com.pk/wp-content/uploads/2023/02/Airpods-Pro-6-Wireless.png" alt="pro 6 airpod" className="w-40 mx-auto h-40" />
-            </div>
-            <button
-              className="w-full text-lg py-2 mt-4 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-              type="button"
-              onClick={() => handleAddToCart(product)}
-            >
-               < ShoppingCartIcon size={30} className="ml-32"/>
-            </button>
-            <div className="pt-3 text-center">
-              <h3 className="font-bold text-lg pt-3">Airpods Pro 6 Wireless </h3>
-              <p className="text-red-500 font-medium pt-2">
-                Rs: 1500 <span className="ml-4 text-gray-400 line-through">Rs:2500</span>
-              </p>
-              <h3 className="flex justify-center items-center pt-3">
-                <img src={Fivestar} alt="Stars" className="w-20" />
-                <span className="text-green-500 ml-2">in stock</span>
-              </h3>
-            </div>
-          </div>
-          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
-            <img src={Discount} alt="Discount" className="" />
-            <div className="relative">
-              <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
-              <img src="https://tse2.mm.bing.net/th?id=OIP.y1sgc113SuKd2wzJ5rW2PQHaHa&pid=Api&P=0&h=220" alt="girls glasses" className="w-40 mx-auto h-40" />
-            </div>
-            <button
-              className="w-full text-lg py-2 mt-4 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-              type="button"
-              onClick={() => handleAddToCart(product)}
-            >
-               < ShoppingCartIcon size={30} className="ml-32"/>
-            </button>
-            <div className="pt-3 text-center">
-              <h3 className="font-bold text-lg pt-3">Square Frame glasses for girls</h3>
-              <p className="text-red-500 font-medium pt-2">
-                Rs: 1000 <span className="ml-4 text-gray-400 line-through">1800</span>
-              </p>
-              <h3 className="flex justify-center items-center pt-3">
-                <img src={Fivestar} alt="Stars" className="w-20" />
-                <span className="text-green-500 ml-2">in stock</span>
-              </h3>
-            </div>
-          </div>
-          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
-            <img src={Discount} alt="Discount" className="" />
-            <div className="relative">
-              <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
-              <img src="https://down-my.img.susercontent.com/file/0c6a90ac961b8fc329728a569302c449" alt="square glasses" className="w-40 mx-auto h-40" />
-            </div>
-            <button
-              className="w-full text-lg py-2 mt-4 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-              type="button"
-              onClick={() => handleAddToCart(product)}
-            >
-               < ShoppingCartIcon size={30} className="ml-32"/>
-            </button>
-            <div className="pt-3 text-center">
-              <h3 className="font-bold text-lg pt-3">Square plastic sun glasses for men,boys</h3>
-              <p className="text-red-500 font-medium pt-2">
-                Rs: 1800 <span className="ml-4 text-gray-400 line-through">Rs:2500</span>
-              </p>
-              <h3 className="flex justify-center items-center pt-3">
-                <img src={Fivestar} alt="Stars" className="w-20" />
-                <span className="text-green-500 ml-2">in stock</span>
-              </h3>
-            </div>
-          </div>
-          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
-            <img src={Discount} alt="Discount" className="" />
-            <div className="relative">
-              <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
-              <img src="https://tse2.mm.bing.net/th?id=OIP.xQOjVxov-h_O9d47MtLuxQAAAA&pid=Api&P=0&h=220" alt="shoes" className="w-40 mx-auto h-40" />
-            </div>
-            <button
-              className="w-full text-lg py-2 mt-4 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-              type="button"
-              onClick={() => handleAddToCart(product)}
-            >
-               < ShoppingCartIcon size={30} className="ml-32"/>
-            </button>
-            <div className="pt-3 text-center">
-              <h3 className="font-bold text-md pt-3">Shoes addidas for mens,boys and girl</h3>
-              <p className="text-red-500 font-medium pt-2">
-                Rs: 1800 <span className="ml-4 text-gray-400 line-through">Rs:2500</span>
-              </p>
-              <h3 className="flex justify-center items-center pt-3">
-                <img src={Fivestar} alt="Stars" className="w-20" />
-                <span className="text-green-500 ml-2">in stock</span>
-              </h3>
-            </div>
-          </div>
-          <div className=" w-full max-w-xs mx-auto p-4 rounded-lg shadow-md">
-            <img src={Discount} alt="Discount" className="" />
-            <div className="relative">
-              <img src={FillEye} alt="View Icon" className="absolute top-2 right-2 w-6 h-6" />
-              <img src="https://tse4.mm.bing.net/th?id=OIP.UjVumT0Aa-WcgXpf_NihSQHaH7&pid=Api&P=0&h=220" alt="Slaonica bed sheet" className="w-40 mx-auto h-40" />
-            </div>
-            <button
-              className="w-full text-lg py-2 mt-4 transition-transform duration-300 hover:bg-black hover:scale-105 hover:text-white"
-              type="button"
-              onClick={() => handleAddToCart(product)}
-            >
-               < ShoppingCartIcon size={30} className="ml-32"/>
-            </button>
-            <div className="pt-3 text-center">
-              <h3 className="font-bold text-lg pt-3">Slaonica bed sheet king size </h3>
-              <p className="text-red-500 font-medium pt-2">
-                Rs: 2000 <span className="ml-4 text-gray-400 line-through">Rs:2500</span>
-              </p>
-              <h3 className="flex justify-center items-center pt-3">
-                <img src={Fivestar} alt="Stars" className="w-20" />
-                <span className="text-green-500 ml-2">in stock</span>
-              </h3>
-            </div>
-          </div>
-          <div className="lg:ml-[170%] lg:pt-10">
-            <button
-              className="bg-red-500 w-[234px] h-[52px]  font-medium rounded border-2 border-red-500 hover:bg-transparent hover:text-red-500 transition-all"
-              type="button"
-              onClick={() => navigate("/Porduct")} // Go to the main products page
-            >
-              View all products
-            </button>
-          </div>
-        </div>
-      </section>
+      <ProductsSection />
       <div className=" ">
         {/* Featured Section */}
         <section className="p-8">
