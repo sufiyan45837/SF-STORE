@@ -15,7 +15,7 @@ import play from "../component/play.png"
 import women from "../component/women.png"
 import spea from "../component/spea.png"
 import perfume from "../component/perfume.png"
-import Services from "../component/Services.png"
+import truck from "../component/truck.png"
 import Servicess from "../component/Servicess.png"
 import Servicesss from "../component/Servicesss.png"
 import CountdownTimer from "../component/CountdownTimer";
@@ -494,7 +494,7 @@ const Home = () => {
           <div>
 
             <div className="text-2xl  " >
-              <img className="  pl-[65px] lg:pl-[90px]" src={Services} alt="" />
+              <img className="  pl-[65px] lg:pl-[90px]" src={truck} alt="" />
               <h1 className="font-bold">Free and Fast Delivery</h1>
               <p className="text-sm text-gray-500">Free delivery on orders over $149</p>
             </div>
