@@ -27,9 +27,8 @@ export default function App() {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }, [darkMode]);
   
-  // Define the function for navigating back to home
   const goToHome = () => {
-    navigate("/Home");  // This will navigate to the Home page
+    navigate("/Home"); 
   };
 
   return (

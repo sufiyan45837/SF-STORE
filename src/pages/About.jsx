@@ -13,7 +13,7 @@ const About = () => {
       <section className="text-center lg:flex lg:items-center lg:justify-between">
         <div className="">
           <h2 className="text-4xl font-bold">Our Story</h2>
-          <p className="mt-4  w-[500px] font-extrabold text-1xl">
+          <p className="mt-4  w-[500px] font-extrabold text-2xl ml-5">
           Launced in 2015, Exclusive is South Asia’s premier online shopping makterplace with an active presense in Bangladesh. Supported by wide range of tailored marketing, data and service solutions, Exclusive has 10,500 sallers and 300 brands and serves 3 millioons customers across the region. 
           Exclusive has more than 1 Million products to offer, growing at a very fast. Exclusive offers a diverse assotment in categories ranging  from consumer.
           </p>
